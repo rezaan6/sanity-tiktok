@@ -20,7 +20,7 @@ const Navbar = () => {
         </div>
       </Link>
 
-      <div>SEARCH</div>
+      <div>SEARCHS</div>
 
       <div>
         {userProfile ? (
