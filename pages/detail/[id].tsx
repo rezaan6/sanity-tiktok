@@ -7,6 +7,7 @@ import { MdOutlineCancel } from "react-icons/md";
 import { BsFillPlayFill } from "react-icons/bs";
 import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
 import axios from "axios";
+import { BASE_URL } from "../../utils";
 
 const Detail = () => {
   return <div>Detail</div>;
@@ -14,7 +15,7 @@ const Detail = () => {
 
 export const getServerSideProps = async ({ params: { id } }) => {
 
-  const {data} = await axios.get("${BASE_URL}/api/post/${id)"); 
+  const {data} = await axios.get(`${BASE_URL}/api/post/${id}`); 
 };
 
 export default Detail;
