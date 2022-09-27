@@ -132,8 +132,10 @@ const Detail = ({ postDetails }: IProps) => {
           <p className="px-10 text-lg text-gray-600">{post.caption}</p>
 
           <div className="mt-10 px-10">{ userProfile &&(
-            <LikeButton handleLike={} handleDislike={() => {
-              
+            <LikeButton handleLike={() => {
+              tr
+            }} handleDislike={() => {
+              true
             }}/>
 
           )}</div>
