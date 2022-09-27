@@ -4,8 +4,8 @@ import { MdFavorite } from "react-icons/md";
 import useAuthstore from "../store/authStore";
 
 interface IProps{
-    handleLike:boolean,
-    handleDislike:boolean,
+    handleLike: ()=>void,
+    handleDislike:()=>void,
 }
 
 const LikeButton = ({handleDislike, handleLike}:IProps) => {
