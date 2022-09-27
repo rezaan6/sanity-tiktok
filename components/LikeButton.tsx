@@ -26,7 +26,7 @@ const LikeButton = ({handleDislike, handleLike}:IProps) => {
         </div>
         )}
 
-        <p className=""></p>
+        <p className="text-base font-semibold">likes</p>
     </div>
 </div>
   );
