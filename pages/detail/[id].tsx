@@ -133,9 +133,9 @@ const Detail = ({ postDetails }: IProps) => {
 
           <div className="mt-10 px-10">{ userProfile &&(
             <LikeButton handleLike={() => {
-              tr
-            }} handleDislike={() => {
               true
+            }} handleDislike={() => {
+              false
             }}/>
 
           )}</div>
