@@ -3,35 +3,33 @@ import { MdFavorite } from "react-icons/md";
 
 import useAuthstore from "../store/authStore";
 
-interface IProps{
-    handleLike: ()=>void,
-    handleDislike:()=>void,
+interface IProps {
+  handleLike: () => void;
+  handleDislike: () => void;
+  likes: any[];
 }
 
-const LikeButton = ({handleDislike, handleLike}:IProps) => {
+const LikeButton = ({ handleDislike, handleLike }: IProps) => {
   const [alreadyliked, setAlreadyliked] = useState(false);
   const { userProfile } = useAuthstore();
 
-
   return (
-<div className="gap-6">
-    <div className="mt-4 flex flex-col cursor-pointer items-center justify-center">
+    <div className="gap-6">
+      <div className="mt-4 flex flex-col cursor-pointer items-center justify-center">
         {alreadyliked ? (
-            <div className="bg-primary rounded-full p-2 md:p-4 text-[#F51997]">
-                <MdFavorite className="text-lg md:text-2xl" onClick={handleDislike}/>
-            </div>
-        ):(
-            <div className="bg-primary rounded-full p-2 md:p-4">
-            <MdFavorite className="text-lg md:text-2xl" onClick={handleLike}/>
-        </div>
+          <div className="bg-primary rounded-full p-2 md:p-4 text-[#F51997]">
+            <MdFavorite className="text-lg md:text-2xl" onClick={handleDislike} />
+          </div>
+        ) : (
+          <div className="bg-primary rounded-full p-2 md:p-4">
+            <MdFavorite className="text-lg md:text-2xl" onClick={handleLike} />
+          </div>
         )}
 
         <p className="text-base font-semibold">{likes?.length | 0}</p>
+      </div>
     </div>
-</div>
   );
 };
 
 export default LikeButton;
-
-
