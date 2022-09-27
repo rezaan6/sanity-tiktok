@@ -25,6 +25,8 @@ const LikeButton = ({handleDislike, handleLike}:IProps) => {
             <MdFavorite className="text-lg md:text-2xl" onClick={handleLike}/>
         </div>
         )}
+
+        <p className=""></p>
     </div>
 </div>
   );
