@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { BsFillPauseFill, BsFillPlayFill } from "react-icons/bs";
 import { GoVerified } from "react-icons/go";
 import { HiVolumeOff } from "react-icons/hi";
@@ -24,11 +24,17 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
     if (playing) {
       videoRef?.current?.pause();
       setPlaying(false);
-    }else{
+    } else {
       videoRef?.current?.play();
       setPlaying(true);
     }
   };
+
+  useEffect(() => {
+    if (videoRef?.current) {
+      videoRef.current.muted = isVideoMuted;
+    }
+  }, [isVideoMuted]);
 
   return (
     <div className="flex flex-col border-b-2 border-gray-200 pb-6">
@@ -87,17 +93,17 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
                   <BsFillPauseFill className="text-black text-2xl lg:text-4xl" />
                 </button>
               ) : (
-                <button  onClick={onVideoPress}>
-                  <BsFillPlayFill  className="text-black text-2xl lg:text-4xl" />
+                <button onClick={onVideoPress}>
+                  <BsFillPlayFill className="text-black text-2xl lg:text-4xl" />
                 </button>
               )}
 
               {isVideoMuted ? (
-                <button onClick={()=> setIsVideoMuted(false)}>
+                <button onClick={() => setIsVideoMuted(false)}>
                   <HiVolumeOff className="text-black text-2xl lg:text-4xl" />
                 </button>
               ) : (
-                <button onClick={()=> setIsVideoMuted(true)}>
+                <button onClick={() => setIsVideoMuted(true)}>
                   <HiVolumeOff className="text-black text-2xl lg:text-4xl" />
                 </button>
               )}
