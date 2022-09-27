@@ -9,12 +9,23 @@ interface IProps {
   likes: any[];
 }
 
-const LikeButton = ({ handleDislike, handleLike }: IProps) => {
+const LikeButton = ({ handleDislike, handleLike, likes }: IProps) => {
   const [alreadyliked, setAlreadyliked] = useState(false);
-  const { userProfile } = useAuthstore();
+  const { userProfile }:any = useAuthstore();
+  const filterLikes = likes?.filter((item)=> item._ref === userProfile?._id)
+
+  useEffect(() => {
+
+    if(filterLikes?.length > 0){
+        setAlreadyliked(true);
+    }else{
+        setAlreadyliked(false);
+    }
+      
+  }, [filterLikes ,likes])
 
   return (
-    <div className="gap-6">
+    <div className=" flex gap-6">
       <div className="mt-4 flex flex-col cursor-pointer items-center justify-center">
         {alreadyliked ? (
           <div className="bg-primary rounded-full p-2 md:p-4 text-[#F51997]">
