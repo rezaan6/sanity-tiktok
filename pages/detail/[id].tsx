@@ -10,6 +10,8 @@ import axios from "axios";
 import { BASE_URL } from "../../utils";
 import { Video } from "../../types";
 import useAuthStore from "../../store/authStore";
+import LikeButton from "../../components/LikeButton";
+import Comments from "../../components/Comments";
 
 interface IProps {
   postDetails: Video;
@@ -38,6 +40,15 @@ const Detail = ({ postDetails }: IProps) => {
       videoRef.current.muted = isVideoMuted;
     }
   }, [post, isVideoMuted]);
+
+  cont handleLike = async (like:boolean){
+    if(userProfile){
+      const response =  await axios.put(`${BASE_URL}/api/like`, {
+        userId: userProfile._id,
+        postId:  post._id,
+      })
+    }
+  }
 
   if (!post) return null;
   return (
@@ -121,6 +132,7 @@ const Detail = ({ postDetails }: IProps) => {
 
           <div className="mt-10 px-10">{ userProfile &&(
             <LikeButton/>
+
           )}</div>
 
           <Comments/>

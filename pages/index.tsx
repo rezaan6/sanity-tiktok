@@ -3,7 +3,7 @@ import Head from "next/head";
 import axios from "axios";
 import { Video } from "../types";
 import VideoCard from "../components/VideoCard";
-import NoResults from "../components/NoResults/NoResults";
+import NoResults from "../components/NoResults";
 import Image from "next/image";
 import Link from "next/link";
 import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
