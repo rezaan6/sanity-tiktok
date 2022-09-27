@@ -3,7 +3,9 @@ import { MdFavorite } from "react-icons/md";
 
 import useAuthstore from "../store/authStore";
 
-const LikeButton = ({handleDislike}) => {
+interfa
+
+const LikeButton = ({handleDislike, handleLike}) => {
   const [alreadyliked, setAlreadyliked] = useState(false);
   const { userProfile } = useAuthstore();
 
