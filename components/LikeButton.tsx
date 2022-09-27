@@ -8,7 +8,7 @@ interface IProps{
     handleDislike:boolean,
 }
 
-const LikeButton<IProps></IProps> = ({handleDislike, handleLike}) => {
+const LikeButton = ({handleDislike, handleLike}:IProps) => {
   const [alreadyliked, setAlreadyliked] = useState(false);
   const { userProfile } = useAuthstore();
 
