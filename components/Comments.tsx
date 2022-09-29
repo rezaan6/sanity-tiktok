@@ -9,6 +9,7 @@ import NoResults from "./NoResults";
 const Comments = () => {
   const comments = [];
   const { userProfile } = useAuthStore();
+  const isPostingComment = false;
 
   return (
     <div className="border-t-2 border-gray-200 pt-4 px-10 bg-[#F8F8F8] border-b-2 lg:pb-0 pb-[100px]">
@@ -17,9 +18,19 @@ const Comments = () => {
       </div>
 
       {userProfile && (
-        <div className="absolute botttom-0 left-0 pb-6 px-2 md:px-10">
+        <div className="absolute bottom-0 left-0 pb-6 px-2 md:px-10">
           <form onSubmit={() => {}} className="flex gap-4">
-            <input type="text" value={""} onChange={() => {}} placeholder="Add comment..." className="bg-primary px-6 py-4 text-base font-medium border-2 w-[250px] md:w-[700px] lg:w-[350px] border-gray focus:outline-none focus:border-gray-300 flex-1 round " />
+            <input
+              value={""}
+              onChange={() => {}}
+              placeholder="Add comment..."
+              className="bg-primary px-6 py-4 text-base font-medium border-2 w-[250px] md:w-[700px] lg:w-[350px] border-gray focus:outline-none focus:border-gray-300 flex-1 rounded-lg "
+            />
+
+            <button className="text-md text-gray-400" onClick={() => {}}>
+              {" "}
+              {isPostingComment ? "Commenting..." : "Comment"}
+            </button>
           </form>
         </div>
       )}

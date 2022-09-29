@@ -53,6 +53,10 @@ const Detail = ({ postDetails }: IProps) => {
     }
   }
 
+  const addComment = async (e)=>{
+    e.preventDefault
+  }
+
   if (!post) return null;
   return (
     <div className="flex w-full absolute left-0 top-0 bg-white flex-wrap lg:flex-nowrap">
