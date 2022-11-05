@@ -2,6 +2,7 @@ import create from "zustand";
 import { persist } from "zustand/middleware";
 import axios from "axios";
 
+import .meta. const BASE_URL 
 const authStore = (set: any) => ({
   userProfile: null,
 
