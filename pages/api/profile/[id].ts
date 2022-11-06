@@ -1,16 +1,18 @@
-import axios from "axios"
-import { BASE_URL } from "../../utils"
+import type { NextApiRequest, NextApiResponse } from 'next'
 
-const Profile = () => {
-  return <div className="">Profile</div>
+import { client } from '../../../utils/client'
+import { singleUserQuery } from '../../../utils/queries'
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  if (req.method === 'GET') {
+    const { id } = req.query
+
+    const query = singleUserQuery(id)
+    const user = await client.fetch(query)
+
+    res.status
+  }
 }
-
-export const getServerSideProps = async ({
-  params: { id },
-}: {
-  params: { id: string }
-}) => {
-    const res = await axios.get(`${BASE_URL}/profile/${id}`)
-}
-
-export default Profile
