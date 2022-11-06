@@ -1,36 +1,56 @@
-import React, {Dispatch, SetStateAction} from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { GoVerified } from "react-icons/go";
+import React, { Dispatch, SetStateAction } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'  
+import { GoVerified } from 'react-icons/go'
 
-import useAuthStore from "../store/authStore";
-import NoResults from "./NoResults";
+import useAuthStore from '../store/authStore'
+import NoResults from './NoResults'
+import { IUser } from '../types'
 
 interface IProps {
-  comment: string;
-  setComment: Dispatch<SetStateAction<string>>;
-  addComment: (e: React.FormEvent) => void;
-  comments: IComment[];
-  isPostingComment: boolean;
+  comment: string
+  setComment: Dispatch<SetStateAction<string>>
+  addComment: (e: React.FormEvent) => void
+  comments: IComment[]
+  isPostingComment: boolean
 }
 
 interface IComment {
-  comment: string;
-  length?: number;
-  _key: string;
-  postedBy: { _ref: string; _id: string };
+  comment: string
+  length?: number
+  _key: string
+  postedBy: {
+    _ref: string
+    _id: string
+  }
 }
 
-const Comments = ({comment, setComment,addComment,comments ,isPostingComment }:IProps) => {
-
-  const { userProfile, allUsers } = useAuthStore();
-
+const Comments = ({
+  comment,
+  setComment,
+  addComment,
+  comments,
+  isPostingComment,
+}: IProps) => {
+  const { userProfile, allUsers } = useAuthStore()
 
   return (
     <div className="border-t-2 border-gray-200 pt-4 px-10 bg-[#F8F8F8] border-b-2 lg:pb-0 pb-[100px]">
       <div className="overflow-scroll lg:h-[475px]">
-        {comments?.length ? comments.map(item,idx)=>())):( <NoResults text="No comments yet" />)}
+        {comments.map((item,dex)=>(
+          <>
+          {allUsers.map((user:IUser)=>(user._id === (item.postedBy._id || item.postedBy._ref) && (
+            <div className="p-2 items-center" key={idx}></div>
+          )
+          
+          
+          ))}
+          </>
+        )):(<NoResults text="No comments yet"/>)}
       </div>
+
+
+
 
       {userProfile && (
         <div className="absolute bottom-0 left-0 pb-6 px-2 md:px-10">
@@ -43,14 +63,14 @@ const Comments = ({comment, setComment,addComment,comments ,isPostingComment }:I
             />
 
             <button className="text-md text-gray-400" onClick={() => {}}>
-              {" "}
-              {isPostingComment ? "Commenting..." : "Comment"}
+              {' '}
+              {isPostingComment ? 'Commenting...' : 'Comment'}
             </button>
           </form>
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Comments;
+export default Comments
