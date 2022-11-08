@@ -15,7 +15,7 @@ const Profile = (data:IProps) => {
   const {user, userVideos, userLikedVideos} = data
   return <div className="w-full">
     <div className="flex gap-6 md:gap-10 mb-4 bg-white w-full">
-    <div className="w-8 h-6">
+    <div className="w-16 h-16 md:w-31 md:h-32">
                 <Image
                   src={user.image}
                   width={34}
@@ -25,8 +25,8 @@ const Profile = (data:IProps) => {
                   layout="responsive"
                 />
               </div>
-              <div className="hidden xl:block">
-                <p className="flex gap-1 items-center text-md font-bold text-primary lowercase">
+              <div className="flex felx-col justify-center">
+                <p className="md:text=2xl flex gap-1 items-center text-md font-bold text-primary lowercase">
                   {user.userName.replaceAll(' ', '')}
                   <GoVerified className="text-blue-400" />
                 </p>
