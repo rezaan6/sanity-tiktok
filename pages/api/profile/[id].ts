@@ -1,7 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { client } from '../../../utils/client'
-import { singleUserQuery, userCreatedPostsQuery, userLikedPostsQuery } from '../../../utils/queries'
+import {
+  singleUserQuery,
+  userCreatedPostsQuery,
+  userLikedPostsQuery,
+  userLikedPostsQuery,
+} from '../../../utils/queries'
 
 export default async function handler(
   req: NextApiRequest,
@@ -11,8 +16,13 @@ export default async function handler(
     const { id } = req.query
 
     const query = singleUserQuery(id)
-    const user = await client.fetch(query)
+    const userVideosQuery = userCreatedPostsQuery(id)
+    const userLikedPostsQuery = userLikedPostsQuery(id)
 
-    res.status(200).json(user)
+    const user = await client.fetch(query)
+    const userVideos = await client.fetch(userVideosQuery)
+    const userLikedVideos = await client.fetch(userLikedVideoQuery)
+
+    res.status(200).json(user: user[0], userVideos, userLikedVideos)
   }
 }
